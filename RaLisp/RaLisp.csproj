@@ -48,6 +48,7 @@
     <Compile Include="StdLib\Let.cs" />
     <Compile Include="StdLib\Map.cs" />
     <Compile Include="StdLib\New.cs" />
+    <Compile Include="StdLib\Not.cs" />
     <Compile Include="StdLib\Print.cs" />
     <Compile Include="StdLib\Push.cs" />
     <Compile Include="StdLib\Require.cs" />

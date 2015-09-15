@@ -60,8 +60,7 @@ namespace RaLispTests
         public void TestFn()
         {
             Assert.AreEqual("hello world", Startup.Evaluate(@"
-                (let foo 
-                    (fn a => + 'hello' ' ' a))
+                (let foo (fn a => + 'hello' ' ' a))
                 (foo 'world')
                 "));
         }
@@ -146,8 +145,25 @@ namespace RaLispTests
             Assert.AreEqual((float)2, output[0]);
             Assert.AreEqual((float)3, output[1]);
             Assert.AreEqual((float)4, output[2]);
+        }
 
+        [TestMethod]
+        public void TestNot()
+        {
+            Assert.IsFalse((bool) Startup.Evaluate("(! true)"));
+            Assert.IsTrue((bool) Startup.Evaluate("(! false)"));
+        }
 
+        [TestMethod]
+        public void TestAddArrays()
+        {
+            var output = Startup.Evaluate(@"(+ (array 1 2) (array 3 4))") as object[];
+
+            Assert.IsNotNull(output);
+            Assert.AreEqual((float) 1, output[0]);
+            Assert.AreEqual((float) 2, output[1]);
+            Assert.AreEqual((float) 3, output[2]);
+            Assert.AreEqual((float) 4, output[3]);
         }
 
     }

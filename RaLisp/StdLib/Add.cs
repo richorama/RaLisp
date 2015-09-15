@@ -13,51 +13,45 @@ namespace RaLisp.StdLib
 
         public object Execute(IDictionary<string, object> context, params object[] parameters)
         {
-            var stringValue = new StringBuilder();
-            float floatValue = 0;
-            var allFloats = true;
-            var allObjects = true;
-            var objectValue = new Dictionary<string,object>();
 
-            foreach (var item in parameters)
+            if (parameters.Length == 0) return null;
+
+            var evaluatedParams = parameters.Select(x => x.Evaluate(context)).ToArray();
+
+            if (evaluatedParams.All(x => x is float))
             {
-                var value = item.Evaluate(context);
-                if (value is float)
-                {
-                    floatValue += (float)value;
-                }
-                else
-                {
-                    allFloats = false;
-                }
-
-                if (value is IDictionary<string, object>)
-                {
-                    foreach (var kv in value as IDictionary<string, object>)
-                    {
-                        objectValue.Add(kv.Key, kv.Value);
-                    }
-                }
-                else
-                {
-                    allObjects = false;
-                }
-
-                stringValue.Append(value.ToString());
+                return evaluatedParams.Sum(x => (float)x);
             }
 
-            if (allFloats)
+            if (evaluatedParams.All(x => x is IDictionary<string, object>))
             {
-                return floatValue;
-            }
-            else if (allObjects)
-            {
+                var objectValue = new Dictionary<string, object>();
+                foreach (IDictionary<string,object> value in evaluatedParams)
+                foreach (var kv in value as IDictionary<string, object>)
+                {
+                    objectValue.Add(kv.Key, kv.Value);
+                }
                 return objectValue;
             }
-            else
+
+            if (evaluatedParams.All(x => x is object[]))
             {
-                return stringValue.ToString();
+                var output = new List<object>();
+                foreach (object[] value in evaluatedParams)
+                {
+                    output.AddRange(value);
+                }
+                return output.ToArray();
             }
+
+            var stringValue = new StringBuilder();
+            foreach (var item in evaluatedParams)
+            {
+                stringValue.Append(item.ToString());
+            }
+            return stringValue.ToString();
+
+  
         }
 
     }
