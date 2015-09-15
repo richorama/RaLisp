@@ -8,7 +8,7 @@ namespace RaLisp
 {
     public interface IFunction
     {
-        object Execute(IDictionary<string, object> context, params IExpression[] parameters);
+        object Execute(IDictionary<string, object> context, params object[] parameters);
 
         string Name { get; }
     }

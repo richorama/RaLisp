@@ -12,12 +12,12 @@ namespace RaLisp
     {
         public Statement()
         {
-            this.Expressions = new List<IExpression>();
+            this.Expressions = new List<object>();
         }
 
         public Statement Parent { get; set; }
 
-        public List<IExpression> Expressions { get; set; }
+        public List<object> Expressions { get; set; }
 
         public object Evaluate(IDictionary<string, object> context)
         {
@@ -25,9 +25,12 @@ namespace RaLisp
 
             if (this.Expressions[0] is Variable)
             {
-                return (context.Get((this.Expressions[0] as Variable).Text) as IFunction).Execute(context, this.Expressions.Skip(1).ToArray());
+                // this is a function
+                return (context.Get((this.Expressions[0] as Variable).Name) as IFunction).Execute(context, this.Expressions.Skip(1).ToArray());
             }
 
+
+            // this is a number of lines of code
             object result = null;
             foreach (Statement statement in this.Expressions)
             {

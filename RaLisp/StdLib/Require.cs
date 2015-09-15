@@ -17,7 +17,7 @@ namespace RaLisp.StdLib
             }
         }
 
-        public object Execute(IDictionary<string, object> context, params IExpression[] parameters)
+        public object Execute(IDictionary<string, object> context, params object[] parameters)
         {
             var code = File.ReadAllText(parameters[0].Evaluate(context).ToString());
             var statement = Parser.Parse(code);

@@ -16,10 +16,10 @@ namespace RaLisp.StdLib
             }
         }
 
-        public object Execute(IDictionary<string, object> context, params IExpression[] parameters)
+        public object Execute(IDictionary<string, object> context, params object[] parameters)
         {
             var value = parameters[1].Evaluate(context);
-            context.Set((parameters[0] as Variable).Text, value);
+            context.Set((parameters[0] as Variable).Name, value);
             return value;
         }
     }

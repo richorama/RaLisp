@@ -29,7 +29,7 @@ namespace RaLispTests
             var statement = Parser.Parse(Tokeniser.Tokenise("(print \"te st\") (foo (bar))"));
 
             Assert.AreEqual(2, statement.Expressions.Count);
-            Assert.AreEqual("print", (((statement.Expressions[0] as Statement).Expressions[0]) as Variable).Text);
+            Assert.AreEqual("print", (((statement.Expressions[0] as Statement).Expressions[0]) as Variable).Name);
         }
 
         [TestMethod]
@@ -41,7 +41,7 @@ namespace RaLispTests
             var statement = Parser.Parse(Tokeniser.Tokenise(code));
 
             Assert.AreEqual(2, statement.Expressions.Count);
-            Assert.AreEqual("print", (((statement.Expressions[0] as Statement).Expressions[0]) as Variable).Text);
+            Assert.AreEqual("print", (((statement.Expressions[0] as Statement).Expressions[0]) as Variable).Name);
         }
 
     }

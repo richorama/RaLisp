@@ -49,5 +49,11 @@ namespace RaLisp
         }
 
 
+        public static object Evaluate(this object value, IDictionary<string, object> context)
+        {
+            if (value is IExpression) return (value as IExpression).Evaluate(context);
+            return value;
+        }
+
     }
 }

@@ -16,7 +16,7 @@ namespace RaLisp.StdLib
             }
         }
 
-        public object Execute(IDictionary<string, object> context, params IExpression[] parameters)
+        public object Execute(IDictionary<string, object> context, params object[] parameters)
         {
             if (parameters[0].Evaluate(context).IsTrue())
             {

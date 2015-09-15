@@ -11,7 +11,7 @@ namespace RaLisp.StdLib
     {
         public string Name { get { return "+"; } }
 
-        public object Execute(IDictionary<string, object> context, params IExpression[] parameters)
+        public object Execute(IDictionary<string, object> context, params object[] parameters)
         {
             var stringValue = new StringBuilder();
             float floatValue = 0;

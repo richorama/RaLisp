@@ -16,9 +16,9 @@ namespace RaLisp.StdLib
             }
         }
 
-        public object Execute(IDictionary<string, object> context, params IExpression[] parameters)
+        public object Execute(IDictionary<string, object> context, params object[] parameters)
         {
-            var args = parameters.TakeWhile(x => (x as Variable).Text != "=>").Select(x => (x as Variable).Text).ToArray();
+            var args = parameters.TakeWhile(x => (x as Variable).Name != "=>").Select(x => (x as Variable).Name).ToArray();
             var body = parameters.Skip(args.Length + 1).ToArray();
             return new UserFunction(args, body);
         }
@@ -28,7 +28,7 @@ namespace RaLisp.StdLib
             public UserFunction()
             { }
 
-            public UserFunction(string[] args, IExpression[] body)
+            public UserFunction(string[] args, object[] body)
             {
                 this.Args = args;
                 this.Expressions = body;
@@ -36,7 +36,7 @@ namespace RaLisp.StdLib
 
             public string[] Args { get; private set; }
 
-            public IExpression[] Expressions { get; private set; }
+            public object[] Expressions { get; private set; }
 
             public string Name
             {
@@ -46,7 +46,7 @@ namespace RaLisp.StdLib
                 }
             }
 
-            public object Execute(IDictionary<string, object> context, params IExpression[] parameters)
+            public object Execute(IDictionary<string, object> context, params object[] parameters)
             {
                 var newContext = new Dictionary<string, object>();
                 foreach (var item in context)

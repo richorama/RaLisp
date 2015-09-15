@@ -34,12 +34,28 @@ namespace RaLisp
                         break;
 
                     case TokenType.Keyword:
-                        current.Expressions.Add(new Variable { Text = token.Text });
+                        current.Expressions.Add(ParseToken(token.Text));
                         break;
                 }                    
             }
-
             return current;
+        }
+
+        static object ParseToken(string value)
+        {
+            if (value == "true") return true;
+            if (value == "false") return false;
+
+            if (value.StartsWith("\"") && value.EndsWith("\"")) return value.Replace("\"", "");
+            if (value.StartsWith("'") && value.EndsWith("'")) return value.Replace("'", "");
+
+            float floatValue = 0;
+            if (float.TryParse(value, out floatValue))
+            {
+                return floatValue;
+            }
+
+            return new Variable { Name = value };
         }
 
     }

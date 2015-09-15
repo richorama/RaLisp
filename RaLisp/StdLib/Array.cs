@@ -16,7 +16,7 @@ namespace RaLisp.StdLib
             }
         }
 
-        public object Execute(IDictionary<string, object> context, params IExpression[] parameters)
+        public object Execute(IDictionary<string, object> context, params object[] parameters)
         {
             return parameters.Select(x => x.Evaluate(context)).ToArray();
         }
