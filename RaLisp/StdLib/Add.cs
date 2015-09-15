@@ -16,6 +16,8 @@ namespace RaLisp.StdLib
             var stringValue = new StringBuilder();
             float floatValue = 0;
             var allFloats = true;
+            var allObjects = true;
+            var objectValue = new Dictionary<string,object>();
 
             foreach (var item in parameters)
             {
@@ -28,12 +30,29 @@ namespace RaLisp.StdLib
                 {
                     allFloats = false;
                 }
+
+                if (value is IDictionary<string, object>)
+                {
+                    foreach (var kv in value as IDictionary<string, object>)
+                    {
+                        objectValue.Add(kv.Key, kv.Value);
+                    }
+                }
+                else
+                {
+                    allObjects = false;
+                }
+
                 stringValue.Append(value.ToString());
             }
 
             if (allFloats)
             {
                 return floatValue;
+            }
+            else if (allObjects)
+            {
+                return objectValue;
             }
             else
             {

@@ -46,6 +46,7 @@
     <Compile Include="StdLib\Array.cs" />
     <Compile Include="StdLib\Fn.cs" />
     <Compile Include="StdLib\Let.cs" />
+    <Compile Include="StdLib\Map.cs" />
     <Compile Include="StdLib\New.cs" />
     <Compile Include="StdLib\Print.cs" />
     <Compile Include="StdLib\Push.cs" />

@@ -115,6 +115,41 @@ namespace RaLispTests
             Assert.AreEqual((float) 6,  Startup.Evaluate("(+ (+ 1 1) (+ 2 2))"));
         }
 
+        [TestMethod]
+        public void TestAddingObjects()
+        {
+            var code = @"
+(let x (new))
+(let y (new))
+
+(let x.foo 'FOO')
+(let y.bar 'BAR')
+
+(+ x y)";
+            var output = Startup.Evaluate(code) as IDictionary<string,object>;
+            Assert.IsNotNull(output);
+            Assert.AreEqual("FOO", output["foo"]);
+            Assert.AreEqual("BAR", output["bar"]);
+
+        }
+
+        [TestMethod]
+        public void TestMap()
+        {
+            var code = @"
+(let y (array 1 2 3))
+(let adder (fn x => + x 1))
+(map y adder)
+";
+            var output = Startup.Evaluate(code) as object[];
+            Assert.IsNotNull(output);
+            Assert.AreEqual((float)2, output[0]);
+            Assert.AreEqual((float)3, output[1]);
+            Assert.AreEqual((float)4, output[2]);
+
+
+        }
+
     }
 
 
