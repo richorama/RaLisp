@@ -198,6 +198,19 @@ namespace RaLispTests
             Assert.AreEqual("hello world", output);
         }
 
+        [TestMethod]
+        public void TestComment()
+        {
+
+            var code = @"
+                (comment (fn => 'hello')
+                (+ (>) ' world'))
+                ";
+
+            var output = RaLisp.Environment.Evaluate(code) as string;
+            Assert.IsNull(output);
+        }
+
     }
 
 
