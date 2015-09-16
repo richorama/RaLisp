@@ -101,11 +101,10 @@ Modules
 
 ```lisp
 ;; other modules can be loaded and assigned to a variable
-(let http (require 'http.txt'))
+(let http (require "http.txt"))
 (http.get "http://localhost")
-```
 
-```
+
 ;; modules can export functions or objects by assigning them to an export object
 (let export.get (fn url => ...))
 ```
