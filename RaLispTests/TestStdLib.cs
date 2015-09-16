@@ -188,18 +188,14 @@ namespace RaLispTests
         public void TestFunctionChaining2()
         {
             var code = @"
-                (array 1 2 3)
-                    (map > (fn x => + x 1))
-                    (map > (fn x => + x 10))
+                (fn => 'hello')
+                (+ (>) ' world')
                 ";
 
-            var output = RaLisp.Environment.Evaluate(code) as object[];
+            var output = RaLisp.Environment.Evaluate(code) as string;
 
             Assert.IsNotNull(output);
-            Assert.AreEqual(3, output.Length);
-            Assert.AreEqual((float)12, output[0]);
-            Assert.AreEqual((float)13, output[1]);
-            Assert.AreEqual((float)14, output[2]);
+            Assert.AreEqual("hello world", output);
         }
 
     }
