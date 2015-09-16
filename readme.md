@@ -72,7 +72,10 @@ Objects
 Arrays
 
 ```lisp
+;; define an array
 (let qux (array 1 2 3))
+
+;; add something to the array
 (let qux` (push qux 4))
 ```
 more array methods will be added later!
@@ -83,11 +86,11 @@ Functions
 ;; define a function that adds one
 (let addone (fn a => + a 1 ))
 
+;; map an array
 (map (array 1 2 3) addone)
 
 ;; the result of the previous statement can be accessed using >
 ;; this allows functions to be chained together
-
 (array 1 2 3)
 	(map > addone)
 	(push > 5)
