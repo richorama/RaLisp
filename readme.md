@@ -4,11 +4,11 @@
 
 ## Overview
 
-RaLisp is an interpreted script, with a lisp-style syntax. It does not attempt compatibility with any lisp standard. Instead, it's a science experiment. It is a single .NET 4.6 binary, which you can:
+RaLisp is an interpreted script, with a lisp-style syntax. It does not attempt compatibility with any lisp standard. Instead, its a science experiment. It is a single .NET 4.6 binary, which you can:
 
 * Add as a reference to your own project
 * Execute on the command line as a REPL (run `RaLisp.exe`)
-* Use to execute am RaLisp program (run `RaLisp.exe program.txt`)
+* Use to execute a RaLisp program (run `RaLisp.exe program.txt`)
 
 RaLisp is in very early stages of development. It is not intended for production use.
 
