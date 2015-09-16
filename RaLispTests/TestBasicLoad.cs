@@ -16,7 +16,7 @@ namespace RaLispTests
         [TestMethod]
         public void TestCreateInitialContext()
         {
-            var ctx = Startup.CreateInitialContext();
+            var ctx = RaLisp.Environment.CreateInitialContext();
             Assert.IsNotNull(ctx);
             Assert.AreNotEqual(0, ctx.Keys.Count);
             Assert.AreEqual(1, ctx.Keys.Count(x => x == "+"));

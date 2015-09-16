@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RaLisp
 {
-    public class Startup
+    public class Environment
     {
         static IEnumerable<IFunction> LoadFunctions()
         {
@@ -34,5 +34,21 @@ namespace RaLisp
             var statement = Parser.Parse(Tokeniser.Tokenise(code));
             return statement.Evaluate(ctx);
         }
+
+        public IDictionary<string, object> Context { get; private set; }
+
+        public Environment(params string[] args)
+        {
+            this.Context = CreateInitialContext();
+            this.Context.Add("args", args);
+        }
+
+        public object Eval(string code)
+        {
+            var statement = Parser.Parse(Tokeniser.Tokenise(code));
+            return statement.Evaluate(this.Context);
+        }
+
+
     }
 }

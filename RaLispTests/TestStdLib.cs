@@ -14,52 +14,52 @@ namespace RaLispTests
         [TestMethod]
         public void TestAdd()
         {
-            Assert.AreEqual((float)3, Startup.Evaluate("(+ 1 2)"));
-            Assert.AreEqual("12", Startup.Evaluate("(+ 1 '2')"));
-            Assert.AreEqual("12", Startup.Evaluate("(+ '1' '2')"));
+            Assert.AreEqual((float)3, RaLisp.Environment.Evaluate("(+ 1 2)"));
+            Assert.AreEqual("12", RaLisp.Environment.Evaluate("(+ 1 '2')"));
+            Assert.AreEqual("12", RaLisp.Environment.Evaluate("(+ '1' '2')"));
         }
 
         [TestMethod]
         public void TestAnd()
         {
-            Assert.IsFalse((bool)Startup.Evaluate("(& true false)"));
-            Assert.IsTrue((bool)Startup.Evaluate("(& true true)"));
-            Assert.IsTrue((bool)Startup.Evaluate("(& true 'hello')"));
-            Assert.IsTrue((bool)Startup.Evaluate("(& true 'hello' 1)"));
-            Assert.IsFalse((bool)Startup.Evaluate("(& true 'hello' 0)"));
+            Assert.IsFalse((bool)RaLisp.Environment.Evaluate("(& true false)"));
+            Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(& true true)"));
+            Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(& true 'hello')"));
+            Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(& true 'hello' 1)"));
+            Assert.IsFalse((bool)RaLisp.Environment.Evaluate("(& true 'hello' 0)"));
         }
 
         [TestMethod]
         public void TestOr()
         {
-            Assert.IsTrue((bool)Startup.Evaluate("(| true false)"));
-            Assert.IsTrue((bool)Startup.Evaluate("(| true true)"));
-            Assert.IsFalse((bool)Startup.Evaluate("(| false false)"));
-            Assert.IsTrue((bool)Startup.Evaluate("(| true 'hello')"));
-            Assert.IsTrue((bool)Startup.Evaluate("(| true 'hello' 1)"));
-            Assert.IsFalse((bool)Startup.Evaluate("(| false 0)"));
+            Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(| true false)"));
+            Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(| true true)"));
+            Assert.IsFalse((bool)RaLisp.Environment.Evaluate("(| false false)"));
+            Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(| true 'hello')"));
+            Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(| true 'hello' 1)"));
+            Assert.IsFalse((bool)RaLisp.Environment.Evaluate("(| false 0)"));
         }
 
         [TestMethod]
         public void TestIf()
         {
-            Assert.AreEqual("yes", Startup.Evaluate("(? true 'yes')"));
-            Assert.AreEqual(null, Startup.Evaluate("(? false 'yes')"));
-            Assert.AreEqual((float) 2, Startup.Evaluate("(? false 'yes' 2)"));
-            Assert.AreEqual("hello", Startup.Evaluate("(? true (+ 'he' 'llo') 2)"));
+            Assert.AreEqual("yes", RaLisp.Environment.Evaluate("(? true 'yes')"));
+            Assert.AreEqual(null, RaLisp.Environment.Evaluate("(? false 'yes')"));
+            Assert.AreEqual((float) 2, RaLisp.Environment.Evaluate("(? false 'yes' 2)"));
+            Assert.AreEqual("hello", RaLisp.Environment.Evaluate("(? true (+ 'he' 'llo') 2)"));
         }
 
         [TestMethod]
         public void TestLet()
         {
-            Assert.AreEqual("hello world", Startup.Evaluate("(let foo 'hello') (+ foo ' ' 'world')"));
+            Assert.AreEqual("hello world", RaLisp.Environment.Evaluate("(let foo 'hello') (+ foo ' ' 'world')"));
 
         }
 
         [TestMethod]
         public void TestFn()
         {
-            Assert.AreEqual("hello world", Startup.Evaluate(@"
+            Assert.AreEqual("hello world", RaLisp.Environment.Evaluate(@"
                 (let foo (fn a => + 'hello' ' ' a))
                 (foo 'world')
                 "));
@@ -69,28 +69,28 @@ namespace RaLispTests
         [TestMethod]
         public void TestPrint()
         {
-            Startup.Evaluate("(print 'hello world')");
+            RaLisp.Environment.Evaluate("(print 'hello world')");
         }
 
         [TestMethod]
         public void TestNew()
         {
-            Assert.IsTrue(Startup.Evaluate("(new)") is IDictionary<string, object>);
-            Assert.AreEqual("hello world", Startup.Evaluate("(let x (new)) (let x.foo 'world') (let qux x.foo) (+ 'hello' ' ' qux)"));
+            Assert.IsTrue(RaLisp.Environment.Evaluate("(new)") is IDictionary<string, object>);
+            Assert.AreEqual("hello world", RaLisp.Environment.Evaluate("(let x (new)) (let x.foo 'world') (let qux x.foo) (+ 'hello' ' ' qux)"));
         }
 
 
         [TestMethod]
         public void TestRequire()
         {
-            Assert.AreEqual("hello", Startup.Evaluate("(let x (require 'dep.txt')) (x)"));
-            Assert.AreEqual("hello foo", Startup.Evaluate("(let x (require 'dep2.txt')) (x.foo)"));
+            Assert.AreEqual("hello", RaLisp.Environment.Evaluate("(let x (require 'dep.txt')) (x)"));
+            Assert.AreEqual("hello foo", RaLisp.Environment.Evaluate("(let x (require 'dep2.txt')) (x.foo)"));
         }
 
         [TestMethod]
         public void TestArray()
         {
-            var array = Startup.Evaluate("(array 'foo' 'bar')") as object[];
+            var array = RaLisp.Environment.Evaluate("(array 'foo' 'bar')") as object[];
             Assert.IsNotNull(array);
             Assert.AreEqual(2, array.Length);
             Assert.AreEqual("foo", array[0]);
@@ -100,7 +100,7 @@ namespace RaLispTests
         [TestMethod]
         public void TestPush()
         {
-            var array = Startup.Evaluate("(push (array 'foo') 'bar')") as object[];
+            var array = RaLisp.Environment.Evaluate("(push (array 'foo') 'bar')") as object[];
             Assert.IsNotNull(array);
             Assert.AreEqual(2, array.Length);
             Assert.AreEqual("foo", array[0]);
@@ -111,21 +111,21 @@ namespace RaLispTests
         [TestMethod]
         public void TestFunctionsCallingFunctions()
         {
-            Assert.AreEqual((float) 6,  Startup.Evaluate("(+ (+ 1 1) (+ 2 2))"));
+            Assert.AreEqual((float) 6, RaLisp.Environment.Evaluate("(+ (+ 1 1) (+ 2 2))"));
         }
 
         [TestMethod]
         public void TestAddingObjects()
         {
             var code = @"
-(let x (new))
-(let y (new))
+                (let x (new))
+                (let y (new))
 
-(let x.foo 'FOO')
-(let y.bar 'BAR')
+                (let x.foo 'FOO')
+                (let y.bar 'BAR')
 
-(+ x y)";
-            var output = Startup.Evaluate(code) as IDictionary<string,object>;
+                (+ x y)";
+            var output = RaLisp.Environment.Evaluate(code) as IDictionary<string, object>;
             Assert.IsNotNull(output);
             Assert.AreEqual("FOO", output["foo"]);
             Assert.AreEqual("BAR", output["bar"]);
@@ -136,11 +136,11 @@ namespace RaLispTests
         public void TestMap()
         {
             var code = @"
-(let y (array 1 2 3))
-(let adder (fn x => + x 1))
-(map y adder)
-";
-            var output = Startup.Evaluate(code) as object[];
+                (let y (array 1 2 3))
+                (let adder (fn x => + x 1))
+                (map y adder)
+                ";
+            var output = RaLisp.Environment.Evaluate(code) as object[];
             Assert.IsNotNull(output);
             Assert.AreEqual((float)2, output[0]);
             Assert.AreEqual((float)3, output[1]);
@@ -150,14 +150,14 @@ namespace RaLispTests
         [TestMethod]
         public void TestNot()
         {
-            Assert.IsFalse((bool) Startup.Evaluate("(! true)"));
-            Assert.IsTrue((bool) Startup.Evaluate("(! false)"));
+            Assert.IsFalse((bool)RaLisp.Environment.Evaluate("(! true)"));
+            Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(! false)"));
         }
 
         [TestMethod]
         public void TestAddArrays()
         {
-            var output = Startup.Evaluate(@"(+ (array 1 2) (array 3 4))") as object[];
+            var output = RaLisp.Environment.Evaluate(@"(+ (array 1 2) (array 3 4))") as object[];
 
             Assert.IsNotNull(output);
             Assert.AreEqual((float) 1, output[0]);
@@ -165,6 +165,26 @@ namespace RaLispTests
             Assert.AreEqual((float) 3, output[2]);
             Assert.AreEqual((float) 4, output[3]);
         }
+
+        [TestMethod]
+        public void TestFunctionChaining()
+        {
+            var code = @"
+                (array 1 2 3)
+                    (map > (fn x => + x 1))
+                    (map > (fn x => + x 10))
+                ";
+
+            var output = RaLisp.Environment.Evaluate(code) as object[];
+
+            Assert.IsNotNull(output);
+            Assert.AreEqual(3, output.Length);
+            Assert.AreEqual((float)12, output[0]);
+            Assert.AreEqual((float)13, output[1]);
+            Assert.AreEqual((float)14, output[2]);
+        }
+
+
 
     }
 

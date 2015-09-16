@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaLisp", "RaLisp\RaLisp.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaLispTests", "RaLispTests\RaLispTests.csproj", "{630B0E4C-A935-407E-84DE-7D78D40B0FB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaLisp.Repl", "RaLisp.Repl\RaLisp.Repl.csproj", "{C72BA41D-F816-4545-8A28-B9D122FA6158}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{630B0E4C-A935-407E-84DE-7D78D40B0FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{630B0E4C-A935-407E-84DE-7D78D40B0FB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{630B0E4C-A935-407E-84DE-7D78D40B0FB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C72BA41D-F816-4545-8A28-B9D122FA6158}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C72BA41D-F816-4545-8A28-B9D122FA6158}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C72BA41D-F816-4545-8A28-B9D122FA6158}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C72BA41D-F816-4545-8A28-B9D122FA6158}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

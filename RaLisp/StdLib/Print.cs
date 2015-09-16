@@ -18,7 +18,9 @@ namespace RaLisp.StdLib
 
         public object Execute(IDictionary<string, object> context, params object[] parameters)
         {
-            return string.Join(",", parameters.Select(x => x.Evaluate(context).ToString()));
+            var text = string.Join(",", parameters.Select(x => x.Evaluate(context).ToString()));
+            Console.WriteLine(text);
+            return null;
         }
     }
 }

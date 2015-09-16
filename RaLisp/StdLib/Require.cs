@@ -21,7 +21,7 @@ namespace RaLisp.StdLib
         {
             var code = File.ReadAllText(parameters[0].Evaluate(context).ToString());
             var statement = Parser.Parse(code);
-            var moduleContext = Startup.CreateInitialContext();
+            var moduleContext = Environment.CreateInitialContext();
             moduleContext.Add("export", new Dictionary<string,object>());
             statement.Evaluate(moduleContext);
             return moduleContext.Get("export");

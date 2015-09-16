@@ -26,7 +26,9 @@ namespace RaLisp
             if (this.Expressions[0] is Variable)
             {
                 // this is a function
-                return (context.Get((this.Expressions[0] as Variable).Name) as IFunction).Execute(context, this.Expressions.Skip(1).ToArray());
+                var output = (context.Get((this.Expressions[0] as Variable).Name) as IFunction).Execute(context, this.Expressions.Skip(1).ToArray());
+                context.Set(">", output);
+                return output;
             }
 
 
@@ -36,6 +38,9 @@ namespace RaLisp
             {
                 result = statement.Evaluate(context);
             }
+
+            context.Set(">", result);
+
             return result;
 
         }

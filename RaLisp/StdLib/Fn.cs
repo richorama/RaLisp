@@ -61,10 +61,15 @@ namespace RaLisp.StdLib
 
                 if (this.Expressions.Length > 1)
                 {
-                    return (new Statement { Expressions = this.Expressions.ToList() }).Evaluate(newContext);
+                    var output = (new Statement { Expressions = this.Expressions.ToList() }).Evaluate(newContext);
+                    context.Set(">", output);
+                    return output;
                 }
 
-                return this.Expressions[0].Evaluate(newContext);
+                var output2 = this.Expressions[0].Evaluate(newContext);
+                context.Set(">", output2);
+                return output2;
+
             }
         }
     }
