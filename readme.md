@@ -89,6 +89,10 @@ Functions
 (array 1 2 3)
 	(map > addone)
 	(push > 5)
+
+;; another example
+(fn => 'hello')
+    (+ (>) ' world')	
 ```
 
 Modules
