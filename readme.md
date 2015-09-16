@@ -77,6 +77,9 @@ Arrays
 
 ;; add something to the array
 (let qux` (push qux 4))
+
+;; add two arrays together
+(+ qux qux`)
 ```
 more array methods will be added later!
 
