@@ -49,7 +49,9 @@ Variables
 
 ```lisp
 ;; bind a variable
-(let x "foo")
+(let a "foo")
+(let b 1)
+(let c false)
 ```
 
 Objects
