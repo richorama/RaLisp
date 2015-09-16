@@ -117,6 +117,12 @@ Modules
 
 ...of course, I'll need to write some modules first!
 
+Comments
+
+```lisp
+(comment this is a comment)
+```
+
 .NET interop
 
 ```C#
