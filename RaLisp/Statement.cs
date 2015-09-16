@@ -31,7 +31,6 @@ namespace RaLisp
                 return output;
             }
 
-
             // this is a number of lines of code
             object result = null;
             foreach (Statement statement in this.Expressions)

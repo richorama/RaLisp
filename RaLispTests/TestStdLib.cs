@@ -184,7 +184,23 @@ namespace RaLispTests
             Assert.AreEqual((float)14, output[2]);
         }
 
+        [TestMethod]
+        public void TestFunctionChaining2()
+        {
+            var code = @"
+                (array 1 2 3)
+                    (map > (fn x => + x 1))
+                    (map > (fn x => + x 10))
+                ";
 
+            var output = RaLisp.Environment.Evaluate(code) as object[];
+
+            Assert.IsNotNull(output);
+            Assert.AreEqual(3, output.Length);
+            Assert.AreEqual((float)12, output[0]);
+            Assert.AreEqual((float)13, output[1]);
+            Assert.AreEqual((float)14, output[2]);
+        }
 
     }
 
