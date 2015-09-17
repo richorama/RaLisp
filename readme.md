@@ -43,6 +43,11 @@ Boolean logic:
 
 ;; if 
 (? true (print "true") (print "false"))
+
+;; equals
+(= 'foo' 'foo' 'foo')
+(= 2 2)
+(= true true)
 ```
 
 Variables

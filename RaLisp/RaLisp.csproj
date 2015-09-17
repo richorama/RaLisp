@@ -49,6 +49,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="StdLib\Array.cs" />
     <Compile Include="StdLib\Comment.cs" />
+    <Compile Include="StdLib\Equals.cs" />
     <Compile Include="StdLib\Fn.cs" />
     <Compile Include="StdLib\Let.cs" />
     <Compile Include="StdLib\Map.cs" />

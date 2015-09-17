@@ -211,6 +211,15 @@ namespace RaLispTests
             Assert.IsNull(output);
         }
 
+        [TestMethod]
+        public void TestEquals()
+        {
+            Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(= 'foo' 'foo' 'foo')"));
+            Assert.IsFalse((bool)RaLisp.Environment.Evaluate("(= 'foo' 'bar')"));
+            Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(= 2 2)"));
+            Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(= true true)"));
+            Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(= false false)"));
+        }
     }
 
 
