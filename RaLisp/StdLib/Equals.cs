@@ -18,9 +18,11 @@ namespace RaLisp.StdLib
 
         public object Execute(IDictionary<string, object> context, params object[] parameters)
         {
-            for (var i = 0; i < parameters.Length -1; i++)
+            var evaledParams = parameters.Select(x => x.Evaluate(context)).ToArray();
+
+            for (var i = 0; i < evaledParams.Length -1; i++)
             {
-                if (!parameters[i].Equals(parameters[i+1])) return false;
+                if (!evaledParams[i].Equals(evaledParams[i+1])) return false;
             }
             return true;
         }

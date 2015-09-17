@@ -219,6 +219,7 @@ namespace RaLispTests
             Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(= 2 2)"));
             Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(= true true)"));
             Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(= false false)"));
+            Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(let x false) (= false x)"));
         }
     }
 
