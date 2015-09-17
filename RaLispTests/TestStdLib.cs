@@ -221,6 +221,12 @@ namespace RaLispTests
             Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(= false false)"));
             Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(let x false) (= false x)"));
         }
+
+        [TestMethod]
+        public void TestStringEscaping()
+        {
+            Assert.AreEqual("hel'lo", RaLisp.Environment.Evaluate("(+ 'hel' \"'lo\")"));
+        }
     }
 
 

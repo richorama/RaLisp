@@ -11,6 +11,7 @@ namespace RaLisp
         public static IEnumerable<Token> Tokenise(string input)
         {
             var sb = new StringBuilder();
+            var stringCharacter = '_';
             var insideString = false;
 
             for (var i = 0; i < input.Length; i++)
@@ -23,7 +24,15 @@ namespace RaLisp
                 {
                     case '"':
                     case '\'':
-                        insideString = !insideString;
+                        if (!insideString)
+                        {
+                            stringCharacter = character;
+                            insideString = !insideString;
+                        }
+                        else if (insideString && stringCharacter == character)
+                        {
+                            insideString = !insideString;
+                        }
                         sb.Append(character);
                         break;
                     case '\r':
