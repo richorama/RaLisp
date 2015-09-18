@@ -227,6 +227,13 @@ namespace RaLispTests
         {
             Assert.AreEqual("hel'lo", RaLisp.Environment.Evaluate("(+ 'hel' \"'lo\")"));
         }
+
+        [TestMethod]
+        public void TestMultiple()
+        {
+            Assert.AreEqual((float)10, RaLisp.Environment.Evaluate("(* 2 5)"));
+        }
+
     }
 
 

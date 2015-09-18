@@ -23,9 +23,13 @@ Hello World
 Basic operators
 
 ```lisp
+// addition
 (+ 1 2)
 (+ 1 2 3 4)
 (+ 'hello' " world")
+
+// multiplication
+(* 2 6)
 ```
 more maths will be added later!
 
