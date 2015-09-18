@@ -240,6 +240,11 @@ namespace RaLispTests
             Assert.AreEqual((float)3, RaLisp.Environment.Evaluate("(- 5 2)"));
         }
 
+        [TestMethod]
+        public void TestDivide()
+        {
+            Assert.AreEqual((float)2, RaLisp.Environment.Evaluate("(/ 4 2)"));
+        }
     }
 
 
