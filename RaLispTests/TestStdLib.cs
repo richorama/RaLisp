@@ -229,9 +229,15 @@ namespace RaLispTests
         }
 
         [TestMethod]
-        public void TestMultiple()
+        public void TestMultiply()
         {
             Assert.AreEqual((float)10, RaLisp.Environment.Evaluate("(* 2 5)"));
+        }
+
+        [TestMethod]
+        public void TestSubtract()
+        {
+            Assert.AreEqual((float)3, RaLisp.Environment.Evaluate("(- 5 2)"));
         }
 
     }

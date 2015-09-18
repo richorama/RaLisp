@@ -59,6 +59,7 @@
     <Compile Include="StdLib\Print.cs" />
     <Compile Include="StdLib\Push.cs" />
     <Compile Include="StdLib\Require.cs" />
+    <Compile Include="StdLib\Subtract.cs" />
     <Compile Include="Variable.cs" />
     <Compile Include="Parser.cs" />
     <Compile Include="Environment.cs" />

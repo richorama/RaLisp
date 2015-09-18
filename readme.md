@@ -30,6 +30,9 @@ Basic operators
 
 // multiplication
 (* 2 6)
+
+// subtraction
+(- 5 2)
 ```
 more maths will be added later!
 
