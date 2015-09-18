@@ -171,8 +171,8 @@ namespace RaLispTests
         {
             var code = @"
                 (array 1 2 3)
-                    (map > (fn x => + x 1))
-                    (map > (fn x => + x 10))
+                    (map @ (fn x => + x 1))
+                    (map @ (fn x => + x 10))
                 ";
 
             var output = RaLisp.Environment.Evaluate(code) as object[];
@@ -189,7 +189,7 @@ namespace RaLispTests
         {
             var code = @"
                 (fn => 'hello')
-                (+ (>) ' world')
+                (+ (@) ' world')
                 ";
 
             var output = RaLisp.Environment.Evaluate(code) as string;
@@ -204,7 +204,7 @@ namespace RaLispTests
 
             var code = @"
                 (comment (fn => 'hello')
-                (+ (>) ' world'))
+                (+ (@) ' world'))
                 ";
 
             var output = RaLisp.Environment.Evaluate(code) as string;

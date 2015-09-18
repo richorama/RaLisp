@@ -27,7 +27,7 @@ namespace RaLisp
             {
                 // this is a function
                 var output = (context.Get((this.Expressions[0] as Variable).Name) as IFunction).Execute(context, this.Expressions.Skip(1).ToArray());
-                context.Set(">", output);
+                context.Set("@", output);
                 return output;
             }
 
@@ -38,7 +38,7 @@ namespace RaLisp
                 result = statement.Evaluate(context);
             }
 
-            context.Set(">", result);
+            context.Set("@", result);
 
             return result;
 

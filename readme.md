@@ -97,15 +97,15 @@ Functions
 ;; map an array
 (map (array 1 2 3) addone)
 
-;; the result of the previous statement can be accessed using >
+;; the result of the previous statement can be accessed using @
 ;; this allows functions to be chained together
 (array 1 2 3)
-	(map > addone)
-	(push > 5)
+	(map @ addone)
+	(push @ 5)
 
 ;; another example
 (fn => 'hello')
-    (+ (>) ' world')	
+    (+ (@) ' world')	
 ```
 
 Modules

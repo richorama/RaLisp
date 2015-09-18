@@ -62,12 +62,12 @@ namespace RaLisp.StdLib
                 if (this.Expressions.Length > 1)
                 {
                     var output = (new Statement { Expressions = this.Expressions.ToList() }).Evaluate(newContext);
-                    context.Set(">", output);
+                    context.Set("@", output);
                     return output;
                 }
 
                 var output2 = this.Expressions[0].Evaluate(newContext);
-                context.Set(">", output2);
+                context.Set("@", output2);
                 return output2;
 
             }
