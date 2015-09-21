@@ -58,6 +58,10 @@ Boolean logic:
 (= 'foo' 'foo' 'foo')
 (= 2 2)
 (= true true)
+
+;; great and less than
+(> 3 4 5)
+(< 5 4 3)
 ```
 
 Variables

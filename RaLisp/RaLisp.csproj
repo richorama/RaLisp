@@ -52,6 +52,8 @@
     <Compile Include="StdLib\Divide.cs" />
     <Compile Include="StdLib\Equals.cs" />
     <Compile Include="StdLib\Fn.cs" />
+    <Compile Include="StdLib\LessThan.cs" />
+    <Compile Include="StdLib\GreaterThan.cs" />
     <Compile Include="StdLib\Let.cs" />
     <Compile Include="StdLib\Map.cs" />
     <Compile Include="StdLib\Multiply.cs" />

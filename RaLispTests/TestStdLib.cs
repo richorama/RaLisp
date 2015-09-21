@@ -245,6 +245,21 @@ namespace RaLispTests
         {
             Assert.AreEqual((float)2, RaLisp.Environment.Evaluate("(/ 4 2)"));
         }
+
+
+        [TestMethod]
+        public void TestGreaterThan()
+        {
+            Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(let x 14) (> 10 12 13.4 x)"));
+            Assert.IsFalse((bool)RaLisp.Environment.Evaluate("(> 4 4)"));
+        }
+
+        [TestMethod]
+        public void TestLessThan()
+        {
+            Assert.IsFalse((bool)RaLisp.Environment.Evaluate("(let x 14) (< 10 12 13.4 x)"));
+            Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(< 5 4)"));
+        }
     }
 
 
