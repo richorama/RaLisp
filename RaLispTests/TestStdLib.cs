@@ -77,6 +77,8 @@ namespace RaLispTests
         {
             Assert.IsTrue(RaLisp.Environment.Evaluate("(new)") is IDictionary<string, object>);
             Assert.AreEqual("hello world", RaLisp.Environment.Evaluate("(let x (new)) (let x.foo 'world') (let qux x.foo) (+ 'hello' ' ' qux)"));
+
+            Assert.AreEqual("hello world", RaLisp.Environment.Evaluate("(let x (new foo 'hello world')) (let y (fn => x.foo)) (y)"));
         }
 
 

@@ -18,7 +18,14 @@ namespace RaLisp.StdLib
 
         public object Execute(IDictionary<string, object> context, params object[] parameters)
         {
-            return new Dictionary<string, object>();
+            var result = new Dictionary<string, object>();
+
+            for (var i = 0; i < parameters.Length; i += 2)
+            {
+                result.Set((parameters[i] as Variable).Name, parameters[i + 1].Evaluate(context));
+            }
+
+            return result;
         }
     }
 }

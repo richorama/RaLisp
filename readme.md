@@ -82,8 +82,8 @@ Objects
 (let y.foo "FOO")
 (print y.foo)
 
-(let z (new))
-(let z.bar "BAR")
+;; initialise with properties
+(let z (new bar "BAR"))
 ;; add two objects together
 (+ y z)
 ```
