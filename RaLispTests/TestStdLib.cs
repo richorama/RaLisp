@@ -149,6 +149,21 @@ namespace RaLispTests
             Assert.AreEqual((float)4, output[2]);
         }
 
+
+        [TestMethod]
+        public void TestFilter()
+        {
+            var code = @"
+                (let y (array 1 2 3))
+                (fn x => = x 2)
+                (filter y @)
+                ";
+            var output = RaLisp.Environment.Evaluate(code) as object[];
+            Assert.IsNotNull(output);
+            Assert.AreEqual(1, output.Length);
+            Assert.AreEqual((float)2, output[0]);
+        }
+
         [TestMethod]
         public void TestNot()
         {

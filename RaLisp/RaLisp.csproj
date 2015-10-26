@@ -60,6 +60,7 @@
     <Compile Include="StdLib\LessThan.cs" />
     <Compile Include="StdLib\GreaterThan.cs" />
     <Compile Include="StdLib\Let.cs" />
+    <Compile Include="StdLib\Filter.cs" />
     <Compile Include="StdLib\Map.cs" />
     <Compile Include="StdLib\Multiply.cs" />
     <Compile Include="StdLib\New.cs" />
