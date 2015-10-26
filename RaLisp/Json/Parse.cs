@@ -13,7 +13,7 @@ namespace RaLisp.Json
         {
             get
             {
-                return "json-parse";
+                return "parse";
             }
         }
 

@@ -13,7 +13,7 @@ namespace RaLisp.IO
         {
             get
             {
-                return "io-open";
+                return "open";
             }
         }
 

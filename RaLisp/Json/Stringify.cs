@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RaLisp.IO
+namespace RaLisp.Json
 {
     public class Stingify : IFunction
     {
@@ -13,13 +13,13 @@ namespace RaLisp.IO
         {
             get
             {
-                return "json-stringify";
+                return "stringify";
             }
         }
 
         public object Execute(IDictionary<string, object> context, params object[] parameters)
         {
-            return Json.Json.Stringify(parameters[0].Evaluate(context));
+            return Json.Stringify(parameters[0].Evaluate(context));
         }
     }
 }

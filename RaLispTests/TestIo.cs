@@ -14,8 +14,9 @@ namespace RaLispTests
         public void TestOpen()
         {
             RaLisp.Environment.Evaluate(@"
+                (let io (require 'io'))
                 (fn err text => print text)
-                (io-open 'testopen.txt' @)");
+                (io.open 'testopen.txt' @)");
 
         }
 
@@ -24,7 +25,8 @@ namespace RaLispTests
         public void TestOpenLambda()
         {
             RaLisp.Environment.Evaluate(@"
-                (io-open 'testopen.txt' (fn err text => print text))");
+                (let io (require 'io'))
+                (io.open 'testopen.txt' (fn err text => print text))");
 
         }
     }

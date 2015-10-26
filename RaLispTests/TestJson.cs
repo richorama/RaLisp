@@ -13,7 +13,7 @@ namespace RaLispTests
         [TestMethod]
         public void TestJsonParse()
         {
-            var json = RaLisp.Environment.Evaluate("(json-parse '{ \"foo\" : 123 }')") as IDictionary<string,object>;
+            var json = RaLisp.Environment.Evaluate("(let js (require 'json')) (js.parse '{ \"foo\" : 123 }')") as IDictionary<string,object>;
             Assert.IsNotNull(json);
             Assert.AreEqual((double)123, json["foo"]);
         }
@@ -21,7 +21,7 @@ namespace RaLispTests
         [TestMethod]
         public void TestJsonStringify()
         {
-            var json = RaLisp.Environment.Evaluate(@"(new foo 123) (json-stringify @)") as string;
+            var json = RaLisp.Environment.Evaluate(@"(let js (require 'json')) (new foo 123) (js.stringify @)") as string;
             Assert.IsNotNull(json);
             Assert.AreEqual("{\"foo\":123}", json);
         }

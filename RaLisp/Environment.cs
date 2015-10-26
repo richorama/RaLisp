@@ -8,20 +8,29 @@ namespace RaLisp
 {
     public class Environment
     {
-        static IEnumerable<IFunction> LoadFunctions()
+        static IDictionary<string, IFunction[]> cache = new Dictionary<string, IFunction[]>();
+
+        internal static IFunction[] LoadFunctions(string ns)
         {
+            if (cache.Keys.Contains(ns)) return cache[ns];
+
             var type = typeof(IFunction);
-            return AppDomain.CurrentDomain.GetAssemblies()
+
+            var result = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
                 .Where(p => type.IsAssignableFrom(p))
                 .Where(p => !p.IsInterface)
-                .Select(x => Activator.CreateInstance(x) as IFunction);
+                .Where(x => ns == null || x.Namespace == ns)
+                .Select(x => Activator.CreateInstance(x) as IFunction).ToArray();
+
+            cache.Add(ns, result);
+            return result;
         }
 
         public static IDictionary<string, object> CreateInitialContext()
         {
             var dictionary = new Dictionary<string, object>();
-            foreach (var function in LoadFunctions())
+            foreach (var function in LoadFunctions("RaLisp.StdLib"))
             {
                 dictionary.Add(function.Name, function);
             }
