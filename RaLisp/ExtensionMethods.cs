@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RaLisp.StdLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,9 +52,22 @@ namespace RaLisp
 
         public static object Evaluate(this object value, IDictionary<string, object> context)
         {
+            // expression        
             if (value is IExpression) return (value as IExpression).Evaluate(context);
+
+            //value
             return value;
         }
 
+        public static IDictionary<string, object> Copy(this IDictionary<string, object> context)
+        {
+            var result = new Dictionary<string, object>();
+            foreach (var key in context)
+            {
+                result.Set(key.Key, key.Value);
+            }
+            return result;
+
+        }
     }
 }

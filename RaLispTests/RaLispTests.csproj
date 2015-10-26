@@ -52,6 +52,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="TestBasicLoad.cs" />
+    <Compile Include="TestIo.cs" />
     <Compile Include="TestParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestStdLib.cs" />
@@ -67,6 +68,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="dep2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="testopen.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

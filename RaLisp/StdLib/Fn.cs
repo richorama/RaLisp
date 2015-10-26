@@ -55,7 +55,7 @@ namespace RaLisp.StdLib
                 }
                 for (var i = 0; i < this.Args.Length; i++)
                 {
-                    newContext.Add(this.Args[0], parameters[i]);
+                    newContext.Add(this.Args[i], parameters[i]);
                 }
 
 

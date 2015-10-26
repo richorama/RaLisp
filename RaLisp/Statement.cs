@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RaLisp
@@ -25,10 +26,28 @@ namespace RaLisp
 
             if (this.Expressions[0] is Variable)
             {
-                // this is a function
-                var output = (context.Get((this.Expressions[0] as Variable).Name) as IFunction).Execute(context, this.Expressions.Skip(1).ToArray());
-                context.Set("@", output);
-                return output;
+                var functionName = (this.Expressions[0] as Variable).Name;
+                var func = context.Get(functionName) as IFunction;
+                var rslt = func.Execute(context, this.Expressions.Skip(1).ToArray());
+                context.Set("@", rslt);
+                return rslt;
+                /*Func<object> action = () => func.Execute(context, this.Expressions.Skip(1).ToArray());
+                var task = new Task<object>(action);
+
+                var handle = new ManualResetEvent(false);
+                task.ContinueWith(x =>
+                {
+                    Console.WriteLine("setting wait handle");
+                    handle.Set();
+                    });
+
+                EventLoop.Instance.Enqueue(task);
+                Console.WriteLine("Awaiting wait handle");
+                handle.WaitOne();
+                Console.WriteLine("resuming wait handle");
+
+                context.Set("@", task.Result);
+                return task.Result;*/
             }
 
             // this is a number of lines of code

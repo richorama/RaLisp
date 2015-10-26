@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="IExpression.cs" />
     <Compile Include="IFunction.cs" />
+    <Compile Include="IO\Open.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="StdLib\Array.cs" />
     <Compile Include="StdLib\Comment.cs" />
