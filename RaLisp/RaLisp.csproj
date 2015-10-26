@@ -47,6 +47,10 @@
     <Compile Include="IExpression.cs" />
     <Compile Include="IFunction.cs" />
     <Compile Include="IO\Open.cs" />
+    <Compile Include="Json\Stringify.cs" />
+    <Compile Include="Json\Parse.cs" />
+    <Compile Include="Json\Parser.cs" />
+    <Compile Include="Json\Serializer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="StdLib\Array.cs" />
     <Compile Include="StdLib\Comment.cs" />

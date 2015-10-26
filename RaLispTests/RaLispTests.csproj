@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="TestBasicLoad.cs" />
     <Compile Include="TestIo.cs" />
+    <Compile Include="TestJson.cs" />
     <Compile Include="TestParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestStdLib.cs" />
