@@ -52,6 +52,7 @@
     <Compile Include="Json\Parser.cs" />
     <Compile Include="Json\Serializer.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="StdLib\Range.cs" />
     <Compile Include="StdLib\Array.cs" />
     <Compile Include="StdLib\Comment.cs" />
     <Compile Include="StdLib\Divide.cs" />

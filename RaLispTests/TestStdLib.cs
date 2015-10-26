@@ -277,6 +277,23 @@ namespace RaLispTests
             Assert.IsFalse((bool)RaLisp.Environment.Evaluate("(let x 14) (< 10 12 13.4 x)"));
             Assert.IsTrue((bool)RaLisp.Environment.Evaluate("(< 5 4)"));
         }
+
+        [TestMethod]
+        public void TestRange()
+        {
+            var result = RaLisp.Environment.Evaluate("(range 1 4)") as double[];
+            Assert.IsNotNull(result);
+            Assert.AreEqual(4, result.Length);
+            Assert.AreEqual(1, result[0]);
+            Assert.AreEqual(4, result[3]);
+
+            var result2 = RaLisp.Environment.Evaluate("(range 3)") as double[];
+            Assert.IsNotNull(result2);
+            Assert.AreEqual(3, result2.Length);
+            Assert.AreEqual(0, result2[0]);
+            Assert.AreEqual(2, result2[2]);
+
+        }
     }
 
 
