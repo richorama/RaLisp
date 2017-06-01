@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace RaLispTests
@@ -299,6 +300,12 @@ namespace RaLispTests
 
             var result2 = RaLisp.Environment.Evaluate("(try 'ok' 'catch' 'finally')") as string;
             Assert.AreEqual("finally", result2);
+
+            var result3 = RaLisp.Environment.Evaluate("(try (throw 'help') 'catch')") as string;
+            Assert.AreEqual("catch", result3);
+
+            var result4 = RaLisp.Environment.Evaluate("(try (throw 'help') @)") as Exception;
+            Assert.IsTrue(result4 is Exception);
 
         }
 

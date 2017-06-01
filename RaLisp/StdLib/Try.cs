@@ -26,7 +26,7 @@ namespace RaLisp.StdLib
             {
                 if (parameters.Length > 1)
                 {
-                    context.Add("@", ex.ToString());
+                    context.Set("@", ex);
                     returnValue = parameters[1].Evaluate(context);
                 }
             }
