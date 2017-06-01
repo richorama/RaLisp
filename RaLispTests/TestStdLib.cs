@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RaLisp;
 
 namespace RaLispTests
 {
@@ -294,6 +289,20 @@ namespace RaLispTests
             Assert.AreEqual(2, result2[2]);
 
         }
+
+        [TestMethod]
+        public void TestTry()
+        {
+
+            var result1 = RaLisp.Environment.Evaluate("(try 'ok' 'catch')") as string;
+            Assert.AreEqual("ok", result1);
+
+            var result2 = RaLisp.Environment.Evaluate("(try 'ok' 'catch' 'finally')") as string;
+            Assert.AreEqual("finally", result2);
+
+        }
+
+
     }
 
 
