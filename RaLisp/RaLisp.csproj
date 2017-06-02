@@ -53,6 +53,7 @@
     <Compile Include="Json\Serializer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="StdLib\Throw.cs" />
+    <Compile Include="StdLib\Panic.cs" />
     <Compile Include="StdLib\Try.cs" />
     <Compile Include="StdLib\Range.cs" />
     <Compile Include="StdLib\Array.cs" />
