@@ -142,6 +142,15 @@ Comments
 (comment this is a comment)
 ```
 
+Errors
+
+```lisp
+(try 
+    (throw "Oh no!") 
+    (print "catch") 
+    (print "finally"))
+```
+
 .NET interop
 
 ```C#
