@@ -16,7 +16,7 @@ namespace RaLispTests
             RaLisp.Environment.Evaluate(@"
                 (let io (require 'io'))
                 (fn err text => print text)
-                (io.open 'testopen.txt' @)");
+                (io.open '..\..\..\testopen.txt' @)");
 
         }
 
@@ -26,7 +26,7 @@ namespace RaLispTests
         {
             RaLisp.Environment.Evaluate(@"
                 (let io (require 'io'))
-                (io.open 'testopen2.txt' (fn err text => print text))");
+                (io.open '..\..\..\testopen2.txt' (fn err text => print text))");
 
         }
     }

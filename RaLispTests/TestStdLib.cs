@@ -81,8 +81,8 @@ namespace RaLispTests
         [TestMethod]
         public void TestRequire()
         {
-            Assert.AreEqual("hello", RaLisp.Environment.Evaluate("(let x (require 'dep.txt')) (x)"));
-            Assert.AreEqual("hello foo", RaLisp.Environment.Evaluate("(let x (require 'dep2.txt')) (x.foo)"));
+            Assert.AreEqual("hello", RaLisp.Environment.Evaluate(@"(let x (require '..\..\..\dep.txt')) (x)"));
+            Assert.AreEqual("hello foo", RaLisp.Environment.Evaluate(@"(let x (require '..\..\..\dep2.txt')) (x.foo)"));
         }
 
         [TestMethod]
