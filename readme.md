@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/6h4iojtgqmqktn8b/branch/master?svg=true)](https://ci.appveyor.com/project/richorama/ralisp/branch/master)
+
 # RaLisp
 
 > A fun project to learn about language design
